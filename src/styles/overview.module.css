@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Reddis-Sans:wght@400;600&display=swap");
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: #f1e8ce;
+  display: flex;
+  padding-top: 48px;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== CONTENT ===== */
+.container {
+  width: 100%;
+  max-width: 1728px;
+  padding: 0 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* ===== TITLE ===== */
+.title {
+  text-align: center;
+  color: #930027;
+  font-family: "Playfair Display", serif;
+  font-size: 55px;
+  font-weight: 600;
+}
+
+/* ===== GRID INFO ===== */
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.card {
+  border-right: 2px solid #930027;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  min-height: 200px;
+}
+
+.card:last-child {
+  border-right: none;
+}
+
+.cardTitle {
+  color: #930027;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.cardText {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #930027;
+  font-family: "Playfair Display", serif;
+  text-align: center;
+  padding-top: 48px;
+}
+
+/* special sizes */
+.textBig {
+  font-size: 35px;
+}
+
+.textHuge {
+  font-size: 40px;
+}
+
+/* ===== LOGO ===== */
+.logo {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ===== BOX SECTION ===== */
+.boxRow {
+  width: 100%;
+  max-width: 1296px; /*đổi lại rem*/
+  display: flex;
+  justify-content: space-between;
+  gap: 120px;
+  padding: 0 80px;
+}
+
+/* ===== BOX ===== */
+.box {
+  flex: 1;
+  background: #930027;
+  border-radius: 40px;
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxInner {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== TEXT BOX ===== */
+.boxTitle {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: "Reddis-Sans", sans-serif;
+}
+
+.boxValue {
+  min-height: 160px;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(#f1e8ce 40%, #d3a769 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-family: "Protest Revolution" !important;
+  font-size: 108px;
+  font-weight: 400;
+  line-height: 100%;
+  display: flex;
+  justify-content: center; /* căn ngang */
+  align-items: center;
+}
+
+.boxDesc {
+  color: #fff;
+  font-size: 22px;
+}
+
+/* ===== BACKGROUND IMAGE ===== */
+.bgSection {
+  width: 100%;
+  height: 684px;
+}
+
+.bgImage {
+  width: 100%;
+  height: 100%;
+  background: url("/src/assets/images/PNG.png") center/cover no-repeat;
+}

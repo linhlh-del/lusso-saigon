@@ -1,0 +1,62 @@
+.matbang {
+  width: 100%;
+  padding: 20px;
+  background: #fef8ec;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #930027;
+  letter-spacing: 2px;
+  line-height: 1.4;
+}
+
+/* Line decor */
+.line {
+  width: 200px;
+  height: 2px;
+  background: #9c5b00;
+  margin: 20px auto 0;
+}
+
+/* ===== IMAGE ===== */
+.imageWrapper {
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 49rem;
+  background: url("src/assets/images/matbang.jpg") center/cover no-repeat;
+  border-radius: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+    letter-spacing: 1px;
+  }
+
+  .image {
+    height: 300px;
+  }
+}

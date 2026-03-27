@@ -1,0 +1,344 @@
+/* NhaMau.css
+   Lưu vào: src/components/NhaMau.css
+   (hoặc src/styles/NhaMau.css – tuỳ cấu trúc project)
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Reddit+Sans:wght@400;500;600&display=swap");
+
+/* ════════════════════════════════════════
+   SECTION WRAPPER
+════════════════════════════════════════ */
+.nm {
+  width: 100%;
+  min-height: 100%;
+  background: #f1e8ce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nm__container {
+  width: 1296px;
+  max-width: 100%;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* ════════════════════════════════════════
+   TITLE BLOCK
+════════════════════════════════════════ */
+.nm__text {
+  width: 100%;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.nm__title {
+  margin: 0;
+  color: #930027;
+  text-align: center;
+  letter-spacing: 2.4px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 400;
+  line-height: 145%;
+}
+
+.nm__subtitle {
+  margin: 0;
+  color: #930027;
+  text-align: center;
+  letter-spacing: 0.8px;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: clamp(14px, 1.3vw, 20px);
+  font-weight: 500;
+  line-height: 145%;
+}
+
+/* ════════════════════════════════════════
+   GALLERY
+════════════════════════════════════════ */
+.nm__gallery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── Ảnh chính ── */
+.nm__main {
+  width: 100%;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #2a0008;
+}
+
+/* Tất cả ảnh stack chồng nhau, chỉ 1 cái visible */
+.nm__main-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+  transform: scale(1.03);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.nm__main-img--active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* Progress dots overlay (góc dưới giữa ảnh chính) */
+.nm__progress {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.nm__progress-dot {
+  all: unset;
+  cursor: pointer;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nm__progress-dot--active {
+  background: #f1e8ce;
+  transform: scale(1.4);
+}
+
+/* ── Thumbnails ── */
+.nm__thumbs {
+  width: 100%;
+  height: 170px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.nm__thumb {
+  all: unset;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #2a0008;
+  display: block;
+
+  /* Viền mặc định */
+  box-shadow: 0 0 0 0px transparent;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.nm__thumb:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(147, 0, 39, 0.25);
+}
+
+.nm__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s ease;
+}
+
+.nm__thumb:not(.nm__thumb--active) img {
+  opacity: 0.65;
+}
+
+.nm__thumb:hover img {
+  opacity: 0.85;
+  transform: scale(1.04);
+}
+
+/* Viền vàng khi active */
+.nm__thumb--active {
+  box-shadow: 0 0 0 3px #d3a769;
+}
+
+.nm__thumb--active img {
+  opacity: 1;
+}
+
+/* Border highlight overlay */
+.nm__thumb-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  border: 3px solid transparent;
+  transition: border-color 0.25s ease;
+  pointer-events: none;
+}
+
+.nm__thumb--active .nm__thumb-border {
+  border-color: #d3a769;
+}
+
+/* ════════════════════════════════════════
+   FULLSCREEN IMAGE VIEWER
+════════════════════════════════════════ */
+.nm__fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease;
+}
+
+.nm__fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: zoomIn 0.3s ease;
+}
+
+.nm__fullscreen-img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+.nm__fullscreen-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+  z-index: 10000;
+}
+
+.nm__fullscreen-close:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .nm__container {
+    width: 100%;
+    padding: 40px 32px;
+  }
+  .nm__main {
+    height: 520px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nm {
+    min-height: auto;
+    padding: 40px 0;
+  }
+  .nm__container {
+    padding: 24px 16px;
+    gap: 24px;
+  }
+  .nm__text {
+    height: auto;
+    padding: 8px 0;
+  }
+  .nm__main {
+    height: 360px;
+  }
+  .nm__thumbs {
+    height: 120px;
+    gap: 10px;
+  }
+  .nm__thumb {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nm__main {
+    height: 260px;
+  }
+  .nm__thumbs {
+    grid-template-columns: repeat(4, 1fr);
+    height: 80px;
+    gap: 8px;
+  }
+  .nm__thumb {
+    height: 80px;
+  }
+}

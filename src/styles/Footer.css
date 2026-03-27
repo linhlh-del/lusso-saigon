@@ -1,0 +1,322 @@
+/* Footer.css
+   Lưu vào: src/components/Footer.css
+*/
+
+/* ════════════════════════════════════════
+   WRAPPER
+════════════════════════════════════════ */
+.ft {
+  width: 100%;
+  /* background: linear-gradient(160deg, #1a0008 0%, #2d0012 40%, #1a0008 100%); */
+  /* Khi có background asset: */
+  background-image: url("../src/assets/images/bg-infor.png");
+  background-size: cover;
+  background-position: center;
+  border-top: 1px solid #dfa777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Centered content width */
+.ft__inner {
+  width: 100%;
+  max-width: 1296px;
+  padding: 0 24px;
+}
+
+/* ════════════════════════════════════════
+   HOTLINE BAR
+════════════════════════════════════════ */
+.ft__hotline-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 24px;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
+}
+
+.ft__hotlines {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.ft__hotline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 60px;
+}
+
+.ft__hotline-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-top: 4px;
+}
+
+.ft__hotline-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.ft__hotline-label {
+  color: #fff;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.48px;
+  line-height: 145%;
+}
+
+.ft__hotline-number {
+  color: #d3a769;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.56px;
+  line-height: 145%;
+}
+
+/* ════════════════════════════════════════
+   MAIN INFO ROW
+════════════════════════════════════════ */
+.ft__main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 32px 0 20px;
+  border-bottom: 0.5px solid #cbcbcb;
+}
+
+.ft__main-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  min-height: 280px;
+}
+
+/* ── Brand / Logo block ── */
+.ft__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 360px;
+  flex-shrink: 0;
+}
+
+.ft__logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  /* swap khi có asset: */
+  img {
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* Fallback text logo */
+.ft__logo-text {
+  color: #f1e8ce;
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.ft__company-name {
+  color: #fff;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  line-height: 145%;
+}
+
+/* Info list (MST, địa chỉ, phone, email) */
+.ft__info-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ft__info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.ft__info-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  margin-top: 1px;
+}
+
+.ft__info-text {
+  color: #fff;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12px;
+  line-height: 145%;
+}
+
+.ft__info-text--link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.ft__info-text--link:hover {
+  color: #d3a769;
+}
+
+/* Bộ Công Thương logo */
+.ft__bct-logo {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  img {
+    height: 50px;
+    object-fit: contain;
+  }
+}
+
+.ft__bct-placeholder {
+  width: 132px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(211, 167, 105, 0.25);
+  border-radius: 4px;
+}
+
+/* ── Nav columns ── */
+.ft__nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 0;
+  min-width: 140px;
+}
+
+.ft__nav-heading {
+  color: #fff;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  line-height: 145%;
+  text-transform: uppercase;
+}
+
+.ft__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ft__nav-link {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.48px;
+  line-height: 145%;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.ft__nav-link:hover {
+  color: #d3a769;
+}
+
+/* ════════════════════════════════════════
+   COPYRIGHT
+════════════════════════════════════════ */
+.ft__copyright {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.ft__copyright p {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.48px;
+  line-height: 145%;
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .ft__inner {
+    padding: 0 32px;
+  }
+  .ft__brand {
+    width: 280px;
+  }
+  .ft__nav-col {
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ft__hotlines {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .ft__main-row {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .ft__brand {
+    width: 100%;
+    max-width: 400px;
+  }
+  .ft__nav-col {
+    flex: 1 1 140px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ft__hotlines {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ft__nav-col {
+    flex: 1 1 120px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ft__hotlines {
+    grid-template-columns: 1fr;
+  }
+}

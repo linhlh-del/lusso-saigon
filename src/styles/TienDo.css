@@ -1,0 +1,332 @@
+/* TienDo.css
+   Lưu vào: src/components/TienDo.css
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap");
+
+/* ════════════════════════════════════════
+   SECTION WRAPPER
+════════════════════════════════════════ */
+.td {
+  width: 100%;
+  min-height: 100%;
+  background-image: url("../assets/images/bg-infor.png");
+  background-size: cover;
+  background-position: center;
+  /* background: linear-gradient(160deg, #1a0008 0%, #2d0012 40%, #1a0008 100%); */
+  border-top: 1px solid #f1e8ce;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.td__container {
+  width: 1296px;
+  max-width: 100%;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ════════════════════════════════════════
+   TITLE
+════════════════════════════════════════ */
+.td__text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-height: 167px;
+  justify-content: center;
+}
+
+.td__title {
+  margin: 0;
+  color: #f1e8ce;
+  text-align: center;
+  letter-spacing: 2.4px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 500;
+  line-height: 145%;
+}
+
+.td__underline {
+  width: 288px;
+  height: 0.5px;
+  background: #fff;
+  opacity: 0.6;
+}
+
+/* ════════════════════════════════════════
+   CAROUSEL
+════════════════════════════════════════ */
+.td__carousel {
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.td__carousel-main {
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #2a0008;
+  position: relative;
+}
+
+.td__carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  animation: carousel-fade-in 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+@keyframes carousel-fade-in {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Navigation Buttons ── */
+.td__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border: 2px solid #d3a769;
+  background: rgba(0, 0, 0, 0.4);
+  color: #f1e8ce;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition:
+    all 0.3s ease,
+    background 0.3s ease;
+  z-index: 10;
+}
+
+.td__btn:hover {
+  background: rgba(211, 167, 105, 0.25);
+  border-color: #f1e8ce;
+  color: #d3a769;
+}
+
+.td__btn--prev {
+  left: 20px;
+}
+
+.td__btn--next {
+  right: 20px;
+}
+
+/* ── Dots Indicators ── */
+.td__dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.td__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition:
+    all 0.3s ease,
+    background 0.3s ease;
+}
+
+.td__dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.td__dot--active {
+  background: #d3a769;
+  width: 32px;
+  border-radius: 6px;
+}
+
+/* ── Counter ── */
+.td__counter {
+  margin-top: 24px;
+  text-align: center;
+  color: #f1e8ce;
+  font-family: "Reddit Sans", Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* ════════════════════════════════════════
+   FULLSCREEN IMAGE VIEWER
+════════════════════════════════════════ */
+.td__fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease;
+}
+
+.td__fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: zoomIn 0.3s ease;
+}
+
+.td__fullscreen-img {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+.td__fullscreen-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+  z-index: 10000;
+}
+
+.td__fullscreen-close:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .td__container {
+    width: 100%;
+    padding: 40px 32px;
+  }
+  .td__carousel-main {
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .td {
+    min-height: auto;
+  }
+  .td__container {
+    padding: 40px 16px;
+    gap: 24px;
+  }
+  .td__text {
+    min-height: auto;
+  }
+  .td__carousel-main {
+    height: 380px;
+  }
+  .td__btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  .td__btn--prev {
+    left: 12px;
+  }
+  .td__btn--next {
+    right: 12px;
+  }
+  .td__counter {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .td__carousel-main {
+    height: 280px;
+  }
+  .td__btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  .td__btn--prev {
+    left: 8px;
+  }
+  .td__btn--next {
+    right: 8px;
+  }
+  .td__dots {
+    bottom: 12px;
+    gap: 8px;
+  }
+  .td__dot {
+    width: 10px;
+    height: 10px;
+  }
+  .td__dot--active {
+    width: 24px;
+  }
+}

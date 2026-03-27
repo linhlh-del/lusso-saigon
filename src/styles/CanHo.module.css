@@ -1,0 +1,199 @@
+.section {
+  background: #930027 url("/src/assets/images/bg-infor.png") center/cover
+    no-repeat;
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 1200px;
+  max-width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+}
+
+.header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+  color: #d3a769;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #f1e8ce;
+  font-size: 20px;
+}
+
+/* CAROUSEL */
+.carouselWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* IMAGE */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+/* ARROWS */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10;
+  pointer-events: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+.arrow:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.arrow img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.arrowLeft {
+  left: 60px;
+}
+
+.arrowRight {
+  right: 60px;
+}
+
+/* DOTS */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  z-index: 11;
+  pointer-events: auto;
+}
+
+.dots span {
+  width: 12px;
+  height: 12px;
+  background: rgba(211, 167, 105, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+  pointer-events: auto;
+}
+
+.dots span:hover {
+  background: #d3a769;
+}
+
+.activeDot {
+  background: #930027 !important;
+  width: 14px;
+  height: 14px;
+}
+
+.activeDot:hover {
+  background: #930027 !important;
+}
+
+/* TABS */
+.tabs {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.tab {
+  min-width: 16rem;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  background: #f1e8ce;
+  color: #930027;
+  font-weight: 700;
+  transition: 0.3s;
+  border-top: 3px solid #f1e8ce;
+  font-family: "Reddit Sans", bold;
+  font-size: clamp(16px, 2vw, 24px);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.tab:hover {
+  background: rgba(211, 167, 105, 0.12);
+  color: #f1e8ce;
+}
+
+.tab.active {
+  background: #d3a769;
+  border-top-color: #d3a769;
+  color: #930027;
+}
+
+/* CTA */
+.cta button {
+  background: #d3a769;
+  color: #930027;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 40px;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  animation: buttonJump 1.5s ease-in-out infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes buttonJump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.cta button:hover {
+  opacity: 0.85;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
