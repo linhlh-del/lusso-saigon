@@ -5,7 +5,7 @@
 
 .wrapper {
   width: 100%;
-  background: url("/src/assets/images/bg-infor.webp") center/cover no-repeat;
+  background: url("../assets/images/bg-infor.webp") center/cover no-repeat;
   border-top: 1px solid #dfa777;
   padding: 2rem 3rem;
   display: flex;
