@@ -502,7 +502,10 @@
   .csb__inner {
     padding: 20px 12px;
   }
-
+  .csb__solution-header {
+    padding: 0.5rem;
+    min-height: 2rem;
+  }
   /* Logo: vẫn 1 hàng, ảnh nhỏ hơn */
   .csb__logo-item {
     height: 2.5rem;

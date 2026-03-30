@@ -32,14 +32,14 @@ const TABS = [
 /**
  * Mỗi milestone:
  *   label        – nhãn thời gian hiển thị TRÊN line
- *   topNote      – dòng nhỏ phía trên label (ví dụ: "Thông báo bàn giao nhà")
- *   between      – text hiển thị TRÊN line ở khoảng GIỮA milestone này và milestone tiếp theo
- *                  (dùng cho "Trong vòng 07 ngày")
- *   betweenBelow – text hiển thị DƯỚI line ở khoảng giữa (dùng cho PA2)
+ *   topNote      – dòng nhỏ phía trên label
+ *   between      – text TRÊN line, khoảng giữa node này → node kế tiếp
+ *   betweenBelow – text DƯỚI line, khoảng giữa node này → node kế tiếp
  *   amount       – số tiền / % lớn hiển thị DƯỚI line
- *   amountLine2  – dòng % phụ ngay dưới amount (PA1: "9%")
+ *   amountLine2  – dòng % phụ ngay dưới amount
  *   note         – ghi chú nhỏ dưới amount
- *   bankNote     – ghi chú màu vàng (Ngân hàng giải ngân…)
+ *   bankNote     – ghi chú màu vàng
+ *   flex         – flex-grow của cột (mặc định 1); tăng để giãn khoảng cách
  */
 const SOLUTIONS = [
   // ── PA1: Vay vốn ngân hàng ────────────────────────────────────────────────
@@ -51,20 +51,22 @@ const SOLUTIONS = [
     milestones: [
       {
         label: "TTĐC",
-        // "Trong vòng 07 ngày" nằm TRÊN line, khoảng giữa node này và node T
         between: "Trong vòng 07 ngày",
         amount: "50 triệu",
         note: "(Ký TTĐC)",
+        flex: 0.6,
       },
       {
         label: "T",
         amount: "11%",
         note: "Ký HĐMB",
+        flex: 1.4,
       },
       {
         label: "T+15",
         amount: "44%",
         bankNote: "Ngân hàng giải ngân",
+        flex: 1.6,
       },
       {
         topNote: "Thông báo bàn giao nhà\nT+540 ngày",
@@ -72,18 +74,18 @@ const SOLUTIONS = [
         amount: "9%",
         amountLine2: "31%",
         bankNote: "Ngân hàng giải ngân",
+        flex: 1,
       },
       {
         topNote: "Thông báo\ncấp sổ hồng",
         label: "",
         amount: "5%",
+        flex: 0.6,
       },
     ],
   },
 
   // ── PA2: Chuẩn 18 tháng ───────────────────────────────────────────────────
-  // Chỉ 4 node. Khoảng giữa T → T+540 không có node,
-  // text "TB 3,5%/tháng" nằm TRÊN line, "Trong vòng 16 tháng" nằm DƯỚI line.
   {
     id: "chuan-18",
     title: "PHƯƠNG ÁN 2 - LUSSO C18",
@@ -95,24 +97,27 @@ const SOLUTIONS = [
         between: "Trong vòng 07 ngày",
         amount: "50 triệu",
         note: "(Ký TTĐC)",
+        flex: 0.6,
       },
       {
         label: "T",
-        // khoảng rộng sau node T → hiển thị text trên/dưới line
         between: "Trung bình: 3,5% mỗi tháng",
         betweenBelow: "Trong vòng 16 tháng",
         amount: "10%",
         note: "Ký HĐMB",
+        flex: 2.4, // khoảng rộng nhất, chứa text giữa T và T+540
       },
       {
         topNote: "Thông báo bàn giao nhà\nT+540 ngày",
         label: "T+540",
         amount: "25%",
+        flex: 1,
       },
       {
         topNote: "Thông báo\ncấp sổ hồng",
         label: "",
         amount: "5%",
+        flex: 0.6,
       },
     ],
   },
@@ -129,30 +134,36 @@ const SOLUTIONS = [
         between: "Trong vòng 07 ngày",
         amount: "50 triệu",
         note: "(Ký TTĐC)",
+        flex: 0.6,
       },
       {
         label: "T",
         amount: "10%",
         note: "Ký HĐMB",
+        flex: 1,
       },
       {
         label: "T+30",
         amount: "40%",
+        flex: 1.2,
       },
       {
         label: "T+300",
         amount: "2%",
         bankNote: "Trung bình 3%/tháng",
+        flex: 1.2,
       },
       {
         topNote: "Thông báo bàn giao nhà\nT+540 ngày",
         label: "T+540",
         amount: "25%",
+        flex: 1,
       },
       {
         topNote: "Thông báo\ncấp sổ hồng",
         label: "",
         amount: "5%",
+        flex: 0.6,
       },
     ],
   },
@@ -169,46 +180,39 @@ const SOLUTIONS = [
         between: "Trong vòng 07 ngày",
         amount: "50 triệu",
         note: "(Ký TTĐC)",
+        flex: 0.6,
       },
       {
         label: "T",
         amount: "10%",
         note: "Ký HĐMB",
+        flex: 1.4,
       },
       {
         label: "T+30",
         amount: "60%",
+        flex: 1.8,
       },
       {
         topNote: "Thông báo bàn giao nhà\nT+540 ngày",
         label: "T+540",
         amount: "25%",
+        flex: 1,
       },
       {
         topNote: "Thông báo\ncấp sổ hồng",
         label: "",
         amount: "5%",
+        flex: 0.6,
       },
     ],
   },
 ];
 
 // ── RoadmapTimeline ───────────────────────────────────────────────────────────
-//
-// Layout 5 hàng × N cột (N = số milestone):
-//
-//   Row 1 [top-note]  :  topNote nhỏ phía trên label
-//   Row 2 [label]     :  nhãn thời gian (TTĐC, T, T+15…)
-//   Row 3 [track]     :  ●───between-text───●───●
-//   Row 4 [amount]    :  50tr  11%  44%  9%+31%  5%
-//   Row 5 [note]      :  ghi chú + bankNote
-//
-// "between" text nằm GIỮA 2 dot trên đường line (trên line).
-// "betweenBelow" text nằm GIỮA 2 dot phía DƯỚI đường line.
-// Cả hai đều render bên trong .rm__track, dùng flex để căn giữa khoảng.
-
 function RoadmapTimeline({ milestones }) {
   const hasTopNotes = milestones.some((m) => m.topNote);
+  const colStyle = (m) => ({ flex: m.flex ?? 1 });
 
   return (
     <div className="rm">
@@ -216,7 +220,7 @@ function RoadmapTimeline({ milestones }) {
       {hasTopNotes && (
         <div className="rm__row rm__row--top">
           {milestones.map((m, i) => (
-            <div key={i} className="rm__col">
+            <div key={i} className="rm__col" style={colStyle(m)}>
               {m.topNote
                 ? m.topNote.split("\n").map((line, j) => (
                     <span key={j}>
@@ -233,7 +237,7 @@ function RoadmapTimeline({ milestones }) {
       {/* ── Hàng 2: label ── */}
       <div className="rm__row rm__row--label">
         {milestones.map((m, i) => (
-          <div key={i} className="rm__col">
+          <div key={i} className="rm__col" style={colStyle(m)}>
             {m.label && <span className="rm__label">{m.label}</span>}
           </div>
         ))}
@@ -242,22 +246,18 @@ function RoadmapTimeline({ milestones }) {
       {/* ── Hàng 3: track (line + dots + between-text) ── */}
       <div className="rm__track">
         <div className="rm__line" />
-
         {milestones.map((m, i) => (
-          <div key={i} className="rm__col rm__col--dot">
-            {/* Dot */}
+          <div key={i} className="rm__col rm__col--dot" style={colStyle(m)}>
             <span className="rm__dot">
               <Dot />
             </span>
 
-            {/* "between" text: nằm trên line, căn giữa khoảng trống SAU dot này */}
             {m.between && (
               <span className="rm__between rm__between--above">
                 {m.between}
               </span>
             )}
 
-            {/* "betweenBelow" text: nằm dưới line, căn giữa khoảng trống SAU dot này */}
             {m.betweenBelow && (
               <span className="rm__between rm__between--below">
                 {m.betweenBelow}
@@ -270,7 +270,7 @@ function RoadmapTimeline({ milestones }) {
       {/* ── Hàng 4: amount ── */}
       <div className="rm__row rm__row--amount">
         {milestones.map((m, i) => (
-          <div key={i} className="rm__col">
+          <div key={i} className="rm__col" style={colStyle(m)}>
             <span className="rm__amount">{m.amount}</span>
             {m.amountLine2 && (
               <span className="rm__amount rm__amount--extra">
@@ -284,7 +284,7 @@ function RoadmapTimeline({ milestones }) {
       {/* ── Hàng 5: note + bankNote ── */}
       <div className="rm__row rm__row--note">
         {milestones.map((m, i) => (
-          <div key={i} className="rm__col">
+          <div key={i} className="rm__col" style={colStyle(m)}>
             {m.note && (
               <span className="rm__note">
                 {m.note.split("\n").map((line, j, arr) => (
