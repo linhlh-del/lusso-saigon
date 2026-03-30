@@ -24,12 +24,18 @@ export default function PopUp({ isOpen, onClose }) {
     e.preventDefault();
     setLoading(true);
 
+    // Thêm dấu ' trước phone number để Google Sheet không bỏ số 0
+    const dataToSend = {
+      ...form,
+      phone: `'${form.phone}`,
+    };
+
     // Gửi request mà không cần đợi response (fire and forget)
     fetch(SHEET_URL, {
       method: "POST",
       mode: "no-cors", // bắt buộc với Apps Script
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
+      body: JSON.stringify(dataToSend),
     }).catch(() => {
       // Bỏ qua lỗi vì mode no-cors không cho phép đọc response
     });

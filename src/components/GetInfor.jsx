@@ -57,12 +57,18 @@ export default function GetInformation() {
     e.preventDefault();
     if (validateForm()) {
       setLoading(true);
+      // Thêm dấu ' trước phone number để Google Sheet không bỏ số 0
+      const dataToSend = {
+        ...formData,
+        phone: `'${formData.phone}`,
+      };
+
       // Gửi request mà không cần đợi response (fire and forget)
       fetch(SHEET_URL, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       }).catch(() => {
         // Bỏ qua lỗi vì mode no-cors không cho phép đọc response
       });
