@@ -97,7 +97,7 @@
   justify-content: center;
   gap: 12px;
   width: 100%;
-  height: 140px;
+  height: 5rem;
 }
 
 .csb__price-label {
@@ -330,7 +330,7 @@
 }
 
 .rm__row--label {
-  min-height: 52px;
+  min-height: 2rem;
   align-items: flex-end;
 }
 

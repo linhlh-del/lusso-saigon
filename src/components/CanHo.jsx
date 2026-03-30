@@ -47,6 +47,8 @@ export default function CanHo({ onOpenModal }) {
   const [activeTab, setActiveTab] = useState("1pn");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true); // điều khiển CSS fade transition
+  const [isZoomOpen, setIsZoomOpen] = useState(false);
+  const [zoomImageIndex, setZoomImageIndex] = useState(0);
 
   const activeTabData = TABS.find((t) => t.id === activeTab);
   const currentImages = activeTabData.images;
@@ -97,12 +99,34 @@ export default function CanHo({ onOpenModal }) {
     changeSlide(newIndex);
   };
 
+  const openZoom = () => {
+    setIsZoomOpen(true);
+    setZoomImageIndex(currentIndex);
+  };
+
+  const closeZoom = () => {
+    setIsZoomOpen(false);
+  };
+
+  const handleZoomPrev = () => {
+    const newIndex =
+      zoomImageIndex === 0 ? currentImages.length - 1 : zoomImageIndex - 1;
+    setZoomImageIndex(newIndex);
+  };
+
+  const handleZoomNext = () => {
+    const newIndex =
+      zoomImageIndex === currentImages.length - 1 ? 0 : zoomImageIndex + 1;
+    setZoomImageIndex(newIndex);
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         {/* Title */}
         <div className={styles.header}>
-          <h2>THIẾT KẾ CĂN HỘ LUSSO SAIGON</h2>
+          <h2>THIẾT KẾ CĂN HỘ</h2>
+          <h2>LUSSO SAIGON</h2>
           <p>Đa dạng loại hình căn hộ · Tư vấn bởi chuyên viên Rever.vn</p>
         </div>
 
@@ -130,6 +154,8 @@ export default function CanHo({ onOpenModal }) {
               className={`${styles.slideImg} ${fade ? styles.fadeIn : styles.fadeOut}`}
               loading="lazy"
               decoding="async"
+              onClick={openZoom}
+              style={{ cursor: "zoom-in" }}
             />
 
             {/* Prev arrow */}
@@ -167,6 +193,51 @@ export default function CanHo({ onOpenModal }) {
         <div className={styles.cta}>
           <button onClick={() => onOpenModal?.()}>NHẬN BÁO GIÁ CHI TIẾT</button>
         </div>
+
+        {/* ZOOM MODAL */}
+        {isZoomOpen && (
+          <div className={styles.zoomOverlay} onClick={closeZoom}>
+            <div className={styles.zoomModal} onClick={(e) => e.stopPropagation()}>
+              <button className={styles.zoomCloseBtn} onClick={closeZoom}>
+                ✕
+              </button>
+
+              <img
+                src={currentImages[zoomImageIndex]}
+                alt={`${activeTabData.label} - Chi tiết`}
+                className={styles.zoomImage}
+              />
+
+              {currentImages.length > 1 && (
+                <>
+                  <button
+                    className={`${styles.zoomArrow} ${styles.zoomArrowLeft}`}
+                    onClick={handleZoomPrev}
+                  >
+                    <img src={arrowIcon} alt="prev" style={{ transform: "scaleX(1)" }} />
+                  </button>
+
+                  <button
+                    className={`${styles.zoomArrow} ${styles.zoomArrowRight}`}
+                    onClick={handleZoomNext}
+                  >
+                    <img src={arrowIcon} alt="next" style={{ transform: "scaleX(-1)" }} />
+                  </button>
+
+                  <div className={styles.zoomDots}>
+                    {currentImages.map((_, index) => (
+                      <span
+                        key={index}
+                        className={index === zoomImageIndex ? styles.zoomActiveDot : ""}
+                        onClick={() => setZoomImageIndex(index)}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

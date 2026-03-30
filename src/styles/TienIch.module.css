@@ -376,7 +376,9 @@
   .image {
     height: 200px;
   }
-
+  .title {
+    font-size: 1.5rem;
+  }
   .tab {
     font-size: 14px;
     height: 50px;

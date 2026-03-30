@@ -24,7 +24,6 @@
   font-family: "Playfair Display", serif;
   font-size: 2.75rem;
   color: #d3a769;
-  margin-bottom: 0.625rem;
 }
 
 .header p {
@@ -237,7 +236,6 @@
 
   .header h2 {
     font-size: 2.5rem;
-    margin-bottom: 0.5rem;
   }
 
   .header p {
@@ -383,5 +381,203 @@
   .cta button {
     padding: 0.625rem 1.5rem;
     font-size: 0.875rem;
+  }
+}
+
+/* ════════════════════════════════════════
+   ZOOM MODAL
+════════════════════════════════════════ */
+.zoomOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.zoomModal {
+  position: relative;
+  width: 90%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.zoomImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.zoomCloseBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10000;
+  color: #930027;
+  font-weight: bold;
+}
+
+.zoomCloseBtn:hover {
+  background: #fff;
+}
+
+.zoomArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4rem;
+  height: 4rem;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  z-index: 10000;
+  padding: 0;
+  overflow: hidden;
+}
+
+.zoomArrow:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.zoomArrow img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.zoomArrowLeft {
+  left: 2rem;
+}
+
+.zoomArrowRight {
+  right: 2rem;
+}
+
+.zoomDots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.zoomDots span {
+  width: 0.875rem;
+  height: 0.875rem;
+  background: rgba(211, 167, 105, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.zoomDots span:hover {
+  background: #d3a769;
+}
+
+.zoomActiveDot {
+  background: #d3a769 !important;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* RESPONSIVE – Zoom Modal */
+@media (max-width: 768px) {
+  .zoomModal {
+    height: 80vh;
+  }
+
+  .zoomCloseBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .zoomArrowLeft {
+    left: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .zoomArrowRight {
+    right: 0.75rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .zoomArrow img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .zoomModal {
+    height: 70vh;
+  }
+
+  .zoomCloseBtn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.25rem;
+  }
+
+  .zoomArrowLeft {
+    left: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .zoomArrowRight {
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .zoomArrow img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .zoomDots {
+    bottom: 1rem;
+    gap: 0.5rem;
+  }
+
+  .zoomDots span {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .zoomActiveDot {
+    width: 0.875rem;
+    height: 0.875rem;
   }
 }
