@@ -86,7 +86,7 @@
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
 
   font-family: "Playfair Display", "Times New Roman", serif;
-  font-size: clamp(1.5rem, 4vw, 60px);
+  font-size: clamp(1.5rem, 4vw, 2.75rem);
   font-weight: 700;
   line-height: 1.3;
 }
