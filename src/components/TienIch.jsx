@@ -9,7 +9,7 @@ import tienichVid4 from "/videos/tienich4.mp4";
 import tienichVid5 from "/videos/tienich5.mp4";
 import tienichVid6 from "/videos/tienich6.mp4";
 import tienichVid7 from "/videos/tienich7.mp4";
-
+// change folder name from "videos" to "tienich-videos" to avoid conflict with main banner video
 // Import ngoại khu images
 import tienichImg1 from "/images/tienich/tienich1.webp";
 import tienichImg2 from "/images/tienich/tienich2.webp";
