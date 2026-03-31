@@ -15,7 +15,7 @@ import GetInformation2 from "./components/GetInfor2";
 import PopUp from "./components/PopUp";
 import Footer from "./components/Footer";
 import FloatingButtons from "./components/FloatingButtons";
-
+import { Analytics } from "@vercel/analytics/react";
 function App() {
   const [showModal, setShowModal] = useState(false);
 
@@ -43,6 +43,7 @@ function App() {
       <GetInformation2 />
       <Footer />
       <PopUp isOpen={showModal} onClose={closeModal} />
+      <Analytics />
     </div>
   );
 }
