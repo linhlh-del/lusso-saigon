@@ -14,3 +14,27 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+
+#dizim-chat-bubble {
+  bottom: 160px !important;
+  right: 20px !important;
+}
+
+#dizim-chat-window {
+  bottom: 232px !important;
+  max-height: calc(100vh - 252px) !important;
+}
+
+@media (max-width: 480px) {
+  #dizim-chat-bubble {
+    bottom: 134px !important;
+    right: 12px !important;
+  }
+
+  #dizim-chat-window {
+    bottom: 206px !important;
+    right: 12px !important;
+    width: calc(100vw - 24px) !important;
+    max-height: calc(100vh - 226px) !important;
+  }
+}
